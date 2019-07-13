@@ -12,7 +12,7 @@
     <h1>Giphy API</h1>
 
     <!-- Buttons Appear Here -->
-    <div id="buttons"></div>
+    <div class="gif-buttons" id="gif-buttons"></div>
 
         <!-- Holds Both GIFs & Prompt Menu -->
 
@@ -20,12 +20,14 @@
             <!-- Gifs -->
         </div>
 
+        <br>
+
         <div id="prompt-menu">
             <!-- Prompt -->
-            <label for="search">Add an animal:</label>
+            <label for="submit">Add an animal:</label>
             <input type="text" class="prompt-control" id="prompt-term">
-            <button type="submit" class="btn btn-danger" id="run-search">
-                <i class="fa fa-search"></i>Search
+            <button type="submit" class="btn btn-danger" id="run-submit">
+                Submit
             </button>
         </div>
 
@@ -39,7 +41,7 @@
             </h5>
         </div>
     </div>
-    
+
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

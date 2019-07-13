@@ -12,23 +12,24 @@
     <h1>Giphy API</h1>
 
     <!-- Buttons Appear Here -->
-    <div class="gif-buttons" id="gif-buttons"></div>
+    <div id="gif-buttons"></div>
 
         <!-- Holds Both GIFs & Prompt Menu -->
-
-        <div id="gifs-here">
-            <!-- Gifs -->
-        </div>
-
         <br>
 
         <div id="prompt-menu">
             <!-- Prompt -->
-            <label for="submit">Add an animal:</label>
-            <input type="text" class="prompt-control" id="prompt-term">
-            <button type="submit" class="btn btn-danger" id="run-submit">
-                Submit
-            </button>
+            <form>
+                <label for="submit">Add a subject:</label>
+                <input type="text" class="prompt-control" id="prompt-term">
+                <button type="submit" class="btn btn-danger" id="run-submit">
+                    Submit
+                </button>
+            </form>
+        </div>
+
+        <div id="gifs-here">
+                <!-- Gifs -->
         </div>
 
     <!-- Footer Region -->
@@ -37,7 +38,7 @@
             <!-- Line Break followed by closing -->
             <hr>
             <h5 class="text-center">
-                <small>Made with lots and lots of love</small>
+                <small>Made by Austin Alber</small>
             </h5>
         </div>
     </div>

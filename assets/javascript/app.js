@@ -2,24 +2,50 @@
 
 // Variable Declaration
 var arr = [];
-var count = 0;
 
 // Functions
 function displayGifInfo()   {
+    // Clears gifs-here div
+    $("#gifs-here").empty();
+
+    // Grabs value of button selected and saves it
     var selection = $(this).attr("data-name");
+    console.log(selection);
+
+    // Creates URL based on selected button
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
     selection + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
 
+    // AJAX call with specified queryURL
     $.ajax({
         url: queryURL,
         method: "GET"
     }).then(function(response)  {
+
         // JSON gif grabing
-        console.log(response);
-        
-        // $("#gifs-here").text(JSON.stringify(response));
+        var results = response.data;
 
+        // Looping through each result item
+        for (var i = 0; i < results.length; i++) {
 
+            // Creating and storing a div tag
+            var gifDiv = $("<div>");
+
+            // Creating a paragraph tag with the result item's rating
+            var p = $("<p>").text("Rating: " + results[i].rating);
+
+            // Creating and storing an image tag
+            var gifImage = $("<img>");
+            // Setting the src attribute of the image to a property pulled off the result item
+            gifImage.attr("src", results[i].images.fixed_height.url);
+
+            // Appending the paragraph and image tag to the animalDiv
+            gifDiv.append(p);
+            gifDiv.append(gifImage);
+
+            // Prependng the animalDiv to the HTML page in the "#gifs-appear-here" div
+            $("#gifs-here").prepend(gifDiv);
+          }
 
     })
 }
@@ -49,24 +75,14 @@ $("#run-submit").on("click", function()  {
     arr.push(selection);
     console.log(arr);
 
+    // Clear Submit box
+    $("#prompt-term").val("");
+
     renderButtons();
-
-    // // Create a new variable to become button
-    // var selectionButton = $("<button>");
-    // selectionButton.attr("id", "button-" + count);
-    // selectionButton.text(selection);
-
-    // // Add button to the 'gifs-here' div
-    // $("#gifs-here").append(selectionButton);
-
-    // // Clear Promptbox when done
-    // $("#prompt-term").val("");
-
-    // // Add to the count
-    // count++;
 });
 
-// 
-$(document).on("click", ".gif-buttons", displayGifInfo);
+// Run displayGifInfo after clicking a gif button
+$(document).on("click", ".gif", displayGifInfo);
+
 
 renderButtons();

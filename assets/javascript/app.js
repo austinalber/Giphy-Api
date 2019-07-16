@@ -50,6 +50,7 @@ function displayGifInfo()   {
     })
 }
 
+// Create and Re-Write Buttons
 function renderButtons()    {
     // Delete Prior Buttons to prevent repeats
     $("#gif-buttons").empty();
@@ -63,6 +64,11 @@ function renderButtons()    {
         $("#gif-buttons").append(a);
     }
 }
+
+// Clear All Created Gif Buttons
+$("#clear-buttons").on("click", function()  {
+    $("#gif-buttons").empty();
+})
 
 $("#run-submit").on("click", function()  {
     // When 'Search' is clicked: Find and Post gifs
